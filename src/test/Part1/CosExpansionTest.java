@@ -1,12 +1,9 @@
-package test;
+package test.Part1;
 
-import main.CosExpansion;
+import main.Part1.CosExpansion;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
-
-
 
 class CosExpansionTest {
     private static final double DELTA = 1e-6;

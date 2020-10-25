@@ -1,4 +1,4 @@
-package main;
+package main.Part1;
 
 import java.util.stream.LongStream;
 

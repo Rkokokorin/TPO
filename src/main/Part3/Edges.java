@@ -1,15 +1,26 @@
 package main.Part3;
 
 public class Edges {
+    private boolean areClamped;
     private int number;
-    private int closingTime;
+    private int clampingTime;
+    public Edges(int num, int time) {
+        areClamped=false;
+        number=num;
+        clampingTime =time;
+    }
+    public void clampEdges() throws InterruptedException {
+        Thread.sleep(clampingTime*1000);
+        areClamped=true;
 
-    public int getClosingTime() {
-        return closingTime;
     }
 
-    public void setClosingTime(int closingTime) {
-        this.closingTime = closingTime;
+    public int getClampingTime() {
+        return clampingTime;
+    }
+
+    public void setClampingTime(int clampingTime) {
+        this.clampingTime = clampingTime;
     }
 
     public int getNumber() {
@@ -19,4 +30,13 @@ public class Edges {
     public void setNumber(int number) {
         this.number = number;
     }
+
+    public boolean areClamped() {
+        return areClamped;
+    }
+
+
+
+
+
 }

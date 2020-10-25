@@ -12,7 +12,7 @@ public class Measurement {
     }
 
     public boolean measureIfWallIsCurved(Wall wall){
-        return this.getMeasurementType() == TypesOfMeasurement.HighQualityLaser;
+        return (wall.isCurved()) && (this.getMeasurementType().equals(TypesOfMeasurement.HighQualityLaser));
 
     }
 

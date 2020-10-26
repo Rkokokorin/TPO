@@ -69,6 +69,9 @@ class CosExpansionTest {
     void testThirdQuoterOfMinusIncrease() {
         assertEquals(Math.cos(-2.09), CosExpansion.expanse(-2.09), DELTA);
     }
-
+    @Test
+    void testHundred() {
+        assertEquals(Math.cos(100), CosExpansion.expanse(100), DELTA);
+    }
 
 }

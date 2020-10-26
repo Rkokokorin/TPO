@@ -1,6 +1,6 @@
 package main.Part1;
 public class CosExpansion {
-    private static final int n = 10;
+    private static final int n = 8;
     public static double expanse(double x) {
         x = ((x/Math.PI)%2)*Math.PI;
         if (x > Math.PI) x -= 2*Math.PI;

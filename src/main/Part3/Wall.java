@@ -2,6 +2,7 @@ package main.Part3;
 
 public class Wall {
     private Condition wallCondition;
+    private Edges edges;
     private boolean isCurved;
     public Wall(Condition wallCondition) {
         this.wallCondition = wallCondition;
@@ -19,4 +20,12 @@ public class Wall {
     public void setCurved(boolean curved) {
         isCurved = curved;
     }
+
+    public Edges getEdges() {
+        return edges;
+    }
+    public void setEdges(Edges edges) {
+        this.edges=edges;
+    }
+
 }

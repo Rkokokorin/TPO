@@ -1,28 +1,25 @@
 package main.Part2;
-
 import java.util.*;
-
-
 public class Graph {
     private final int V;
     private final LinkedList<Integer>[] adj;
-
     public Graph(int v) {
         V = v;
         adj = new LinkedList[v];
         for (int i = 0; i < v; ++i)
             adj[i] = new LinkedList();
     }
-
-    public void addEdge(int v, int w) {
+    public void addBidirectionalEdge(int v, int w) {
         adj[v].add(w);
         adj[w].add(v);
     }
+    public void addEdge(int v, int w) {
+        adj[v].add(w);
 
+    }
     public String BFS(int s) {
         if (V == 0)
             return "";
-
         boolean[] visited = new boolean[V];
         LinkedList<Integer> queue = new LinkedList<Integer>();
         visited[s] = true;
@@ -31,7 +28,6 @@ public class Graph {
         while (queue.size() != 0) {
             s = queue.poll();
             resultBuilder.append(s).append(" ");
-
             for (int n : adj[s]) {
                 if (!visited[n]) {
                     visited[n] = true;

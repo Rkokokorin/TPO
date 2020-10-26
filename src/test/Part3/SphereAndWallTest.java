@@ -1,6 +1,6 @@
 package test.Part3;
-
 import main.Part3.Condition;
+import main.Part3.Edges;
 import main.Part3.Sphere;
 import main.Part3.Wall;
 import org.junit.jupiter.api.BeforeEach;
@@ -59,9 +59,26 @@ class SphereAndWallTest {
         assertNull(sphere.getInnerSurface());
     }
     @Test
-    void setWallCondition() {
+    void wallCondition() {
         Wall wall = new Wall(Condition.FLAT);
         wall.setWallCondition(Condition.BUMPY);
         assertEquals(wall.getWallCondition(),Condition.BUMPY);
     }
+
+    @Test
+    void isCurved() {
+        Wall wall = new Wall(Condition.FLAT);
+        wall.setCurved(true);
+        assertTrue(wall.isCurved());
+    }
+
+    @Test
+    void getEdges() {
+        Wall wall = new Wall(Condition.FLAT);
+        Edges edges = new Edges(5,1);
+        wall.setEdges(edges);
+        assertEquals(edges,wall.getEdges());
+    }
+
+
 }

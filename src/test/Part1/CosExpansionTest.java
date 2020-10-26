@@ -1,14 +1,10 @@
 package test.Part1;
-
 import main.Part1.CosExpansion;
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
 class CosExpansionTest {
     private static final double DELTA = 1e-6;
     private static final double EPSILON = 1e-3;
-
     @Test
     void testZero() {
         assertEquals(Math.cos(0), CosExpansion.expanse(0), DELTA);
@@ -21,7 +17,6 @@ class CosExpansionTest {
     void testZeroPlusEpsilon() {
         assertEquals(Math.cos(EPSILON), CosExpansion.expanse(EPSILON), DELTA);
     }
-
     @Test
     void testMinusPI() {
         assertEquals(Math.cos(-Math.PI), CosExpansion.expanse(-Math.PI), DELTA);
@@ -34,7 +29,6 @@ class CosExpansionTest {
     void testMinusPIPlusEpsilon() {
         assertEquals(Math.cos(-Math.PI+EPSILON), CosExpansion.expanse(-Math.PI+EPSILON), DELTA);
     }
-
     @Test
     void testPI() {
         assertEquals(Math.cos(Math.PI), CosExpansion.expanse(Math.PI), DELTA);
@@ -47,17 +41,14 @@ class CosExpansionTest {
     void testPIPlusEpsilon() {
         assertEquals(Math.cos(Math.PI+EPSILON), CosExpansion.expanse(Math.PI+EPSILON), DELTA);
     }
-
     @Test
     void testHalfPi() {
         assertEquals(Math.cos(Math.PI/2), CosExpansion.expanse(Math.PI/2), DELTA);
     }
-
     @Test
     void testMinusHalfPi() {
         assertEquals(Math.cos(-Math.PI/2), CosExpansion.expanse(-Math.PI/2), DELTA);
     }
-
     @Test
     void testMinusHalfOne() {
         assertEquals(Math.cos(-0.5), CosExpansion.expanse(-0.5), DELTA);

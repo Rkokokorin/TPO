@@ -14,6 +14,7 @@ public class CosExpansion {
     }
     public static long factorial( int a){
         long result=1;
+
         while( a>0 ){
         result= result*a;
         a--;

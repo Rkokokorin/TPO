@@ -14,7 +14,6 @@ public class GraphTest {
         Graph g = new Graph(1);
         assertEquals("0", g.BFS(0));
     }
-
     @Test
     void testThreeVertexGraphFromZero(){
         Graph g = new Graph(3);
@@ -28,16 +27,13 @@ public class GraphTest {
         Graph g = new Graph(3);
         g.addEdge(0, 1);
         g.addEdge(1, 2);
-
         assertEquals("2", g.BFS(2));
     }
-
     @Test
     void testThreeVertexGraphFromOne(){
         Graph g = new Graph(3);
         g.addBidirectionalEdge(0, 1);
         g.addBidirectionalEdge(1, 2);
-
         assertEquals("1 0 2", g.BFS(1));
     }
     @Test
@@ -46,7 +42,6 @@ public class GraphTest {
         g.addEdge(0, 1);
         g.addEdge(1, 2);
         g.addEdge(2, 0);
-
         assertEquals("0 1 2", g.BFS(0));
     }
 
@@ -62,7 +57,6 @@ public class GraphTest {
         g.addBidirectionalEdge(3, 7);
         g.addBidirectionalEdge(4, 6);
         g.addBidirectionalEdge(6, 7);
-
         assertEquals("0 1 4 3 5 6 7 2", g.BFS(0));
     }
 }

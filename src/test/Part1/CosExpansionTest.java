@@ -10,9 +10,7 @@ class CosExpansionTest {
         assertEquals(Math.cos(0), CosExpansion.expanse(0), DELTA);
     }
     @Test
-    void testZeroMinusEpsilon() {
-        assertEquals(Math.cos(-EPSILON), CosExpansion.expanse(-EPSILON), DELTA);
-    }
+    void testZeroMinusEpsilon() { assertEquals(Math.cos(-EPSILON), CosExpansion.expanse(-EPSILON), DELTA); }
     @Test
     void testZeroPlusEpsilon() {
         assertEquals(Math.cos(EPSILON), CosExpansion.expanse(EPSILON), DELTA);
@@ -22,13 +20,9 @@ class CosExpansionTest {
         assertEquals(Math.cos(-Math.PI), CosExpansion.expanse(-Math.PI), DELTA);
     }
     @Test
-    void testMinusPIMinusEpsilon() {
-        assertEquals(Math.cos(-Math.PI-EPSILON), CosExpansion.expanse(-Math.PI-EPSILON), DELTA);
-    }
+    void testMinusPIMinusEpsilon() { assertEquals(Math.cos(-Math.PI-EPSILON), CosExpansion.expanse(-Math.PI-EPSILON), DELTA); }
     @Test
-    void testMinusPIPlusEpsilon() {
-        assertEquals(Math.cos(-Math.PI+EPSILON), CosExpansion.expanse(-Math.PI+EPSILON), DELTA);
-    }
+    void testMinusPIPlusEpsilon() { assertEquals(Math.cos(-Math.PI+EPSILON), CosExpansion.expanse(-Math.PI+EPSILON), DELTA); }
     @Test
     void testPI() {
         assertEquals(Math.cos(Math.PI), CosExpansion.expanse(Math.PI), DELTA);
@@ -73,5 +67,8 @@ class CosExpansionTest {
     void testHundred() {
         assertEquals(Math.cos(100), CosExpansion.expanse(100), DELTA);
     }
-
+    @Test
+    void testFactorialZero(){assertEquals(1,CosExpansion.factorial(0));}
+    @Test
+    void testFactorial(){assertEquals(120,CosExpansion.factorial(5)); }
 }

@@ -1,84 +1,87 @@
 package test.Part3;
-import main.Part3.Condition;
-import main.Part3.Edges;
-import main.Part3.Sphere;
-import main.Part3.Wall;
+import main.Part3.*;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EnumSource;
+
 import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
 class SphereAndWallTest {
-
-
+    Sphere sphere;
+    Wall wall;
+    @BeforeEach
+    void initSphere() {
+        sphere = new Sphere(true);
+        wall = new Wall(Condition.FLAT, Measurement.HighQualityLaser);
+        sphere.initInnerSurface(wall);
+    }
+    @AfterEach
+    void printPhrase(){
+        System.out.println("Тест Завершен");
+    }
     @Test
     void initInnerSurfaceIfWallIsFlat() {
-        Wall wall = new Wall(Condition.FLAT);
-        Sphere sphere = new Sphere();
-        sphere.initInnerSurface(wall);
         assertEquals(wall,sphere.getInnerSurface());
     }
-    @Test
-    void initInnerSurfaceIfWallIsNotFlat() {
-        Wall wall = new Wall(Condition.BUMPY);
-        Sphere sphere = new Sphere();
-        sphere.initInnerSurface(wall);
-        assertNull(sphere.getInnerSurface());
-    }
+
     @Test
     void initInnerSurfaceIfWallIsAlreadySet() {
-        Wall wall = new Wall(Condition.FLAT);
-        Wall wall1 = new Wall(Condition.FLAT);
-        Sphere sphere = new Sphere();
-        sphere.initInnerSurface(wall);
+        Wall wall1 = new Wall(Condition.FLAT,Measurement.HighQualityLaser);
         sphere.initInnerSurface(wall1);
         assertEquals(wall,sphere.getInnerSurface());
     }
-
     @Test
     void isHollow() {
-        Sphere sphere = new Sphere();
         sphere.setHollow(true);
         assertTrue(sphere.isHollow());
     }
     @Test
     void changeInnerSurface() {
-        Wall wall = new Wall(Condition.FLAT);
-        Wall wall1 = new Wall(Condition.FLAT);
-        Sphere sphere = new Sphere();
-        sphere.initInnerSurface(wall);
+        Wall wall1 = new Wall(Condition.FLAT,Measurement.HighQualityLaser);
         sphere.changeInnerSurface(wall1);
         assertEquals(wall1,sphere.getInnerSurface());
     }
     @Test
     void changeInnerSurfaceIfWallIsNotFlat() {
-
-        Wall wall1 = new Wall(Condition.CONVEX);
-        Sphere sphere = new Sphere();
+        sphere.deleteInnerSurface();
+        Wall wall1 = new Wall(Condition.CONVEX,Measurement.HighQualityLaser);
         sphere.changeInnerSurface(wall1);
         assertNull(sphere.getInnerSurface());
     }
     @Test
     void wallCondition() {
-        Wall wall = new Wall(Condition.FLAT);
         wall.setWallCondition(Condition.BUMPY);
         assertEquals(wall.getWallCondition(),Condition.BUMPY);
     }
-
     @Test
     void isCurved() {
-        Wall wall = new Wall(Condition.FLAT);
-        wall.setCurved(true);
+        wall.setIfCurved();
         assertTrue(wall.isCurved());
     }
-
     @Test
     void getEdges() {
-        Wall wall = new Wall(Condition.FLAT);
         Edges edges = new Edges(5,1);
         wall.setEdges(edges);
         assertEquals(edges,wall.getEdges());
     }
+    @Test
+    void deleteInnerSurface() {
+        sphere.deleteInnerSurface();
+        assertNull(sphere.getInnerSurface());
 
+    }
+    @ParameterizedTest
+    @EnumSource(
+            value = Condition.class,
+            names = {"FLAT"},
+            mode = EnumSource.Mode.EXCLUDE)
+    void initInnerSurfaceIfWallIsNotFlat(Condition condition) {
+        sphere.deleteInnerSurface();
+        wall.setWallCondition(condition);
+        sphere.changeInnerSurface(wall);
+        assertNull(sphere.getInnerSurface());
+    }
 
 }

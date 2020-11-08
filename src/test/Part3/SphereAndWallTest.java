@@ -74,9 +74,9 @@ class SphereAndWallTest {
     }
     @ParameterizedTest
     @EnumSource(
-            value = Condition.class,
-            names = {"FLAT"},
-            mode = EnumSource.Mode.EXCLUDE)
+        value = Condition.class,
+        names = {"FLAT"},
+        mode = EnumSource.Mode.EXCLUDE)
     void initInnerSurfaceIfWallIsNotFlat(Condition condition) {
         sphere.deleteInnerSurface();
         wall.setWallCondition(condition);

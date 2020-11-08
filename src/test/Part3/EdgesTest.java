@@ -2,7 +2,7 @@ package test.Part3;
 import main.Part3.Edges;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-class EdgesTest {
+class EdgesTest{
     @Test
     void clampEdges() throws InterruptedException {
         Edges edges = new Edges(13,3);

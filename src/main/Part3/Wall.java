@@ -3,7 +3,7 @@ package main.Part3;
 public class Wall {
     private Condition wallCondition;
     private Edges edges;
-    Measurement measurement;
+    private Measurement measurement;
     private boolean isCurved;
     public Wall(Condition wallCondition, Measurement measurement) {
         this.measurement = measurement;
@@ -11,10 +11,8 @@ public class Wall {
         this.setIfCurved();
     }
     public void setIfCurved() {
-        this.isCurved = measurement.equals(Measurement.HighQualityLaser)
-                && (this.getWallCondition().equals(Condition.FLAT));
+        this.isCurved = measurement.equals(Measurement.HighQualityLaser)&&(this.getWallCondition().equals(Condition.FLAT));
     }
-
     public Condition getWallCondition() {
         return wallCondition;
     }
@@ -24,13 +22,17 @@ public class Wall {
     public boolean isCurved() {
         return isCurved;
     }
-
-
     public Edges getEdges() {
         return edges;
     }
     public void setEdges(Edges edges) {
         this.edges=edges;
     }
-
+    public void setMeasurement(Measurement measurement){
+        this.measurement=measurement;
+    }
+    public Measurement getMeasurement(){
+        return this.measurement;
+    }
 }
+

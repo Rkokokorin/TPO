@@ -5,7 +5,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
-
 import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 class SphereAndWallTest {
@@ -25,7 +24,10 @@ class SphereAndWallTest {
     void initInnerSurfaceIfWallIsFlat() {
         assertEquals(wall,sphere.getInnerSurface());
     }
-
+    @Test
+    void getMeasurement() {
+        assertEquals(Measurement.HighQualityLaser,wall.getMeasurement());
+    }
     @Test
     void initInnerSurfaceIfWallIsAlreadySet() {
         Wall wall1 = new Wall(Condition.FLAT,Measurement.HighQualityLaser);
@@ -82,6 +84,15 @@ class SphereAndWallTest {
         wall.setWallCondition(condition);
         sphere.changeInnerSurface(wall);
         assertNull(sphere.getInnerSurface());
+    }
+    @ParameterizedTest
+    @EnumSource(
+            value = Measurement.class,
+            names = {"LowQualityLaser", "MediumQualityLaser", "OnEye", "Protractor"})
+    void isCurvedTestWithOtherTests(Measurement measurement) {
+        wall.setMeasurement(measurement);
+        wall.setIfCurved();
+        assertFalse(wall.isCurved());
     }
 
 }

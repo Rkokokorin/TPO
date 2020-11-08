@@ -8,13 +8,15 @@ public class Sphere {
     }
     public void initInnerSurface(Wall wall){
         if (wall.getWallCondition()== Condition.FLAT)
-         if (this.innerSurface == null)
-            if (this.isHollow)
-
-        this.innerSurface=wall;
+            if (this.innerSurface == null)
+                if (this.isHollow)
+                    this.innerSurface=wall;
+                else
+                    System.out.println("Сфера не полая");
+            else
+                System.out.println("У этой сферы уже инициализирована внутренняя поверхность");
         else
-            System.out.println("У этой сферы уже инициализирована внутренняя поверхность");
-        else System.out.println("Эта  стена не может быть внутренней поверхностью сферы");
+            System.out.println("Эта  стена не может быть внутренней поверхностью сферы");
     }
     public boolean isHollow() {
         return isHollow;
@@ -28,10 +30,10 @@ public class Sphere {
     public void changeInnerSurface(Wall wall)
     {if (wall.getWallCondition() == Condition.FLAT)
         this.innerSurface=wall;
-    else System.out.println("Эта  стена не может быть внутренней поверхностью сферы");
+    else
+        System.out.println("Эта  стена не может быть внутренней поверхностью сферы");
     }
-    public void deleteInnerSurface()
-    {
+    public void deleteInnerSurface() {
         this.innerSurface=null;
     }
 }
